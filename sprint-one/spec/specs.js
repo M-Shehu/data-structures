@@ -39,6 +39,7 @@ define([
       });
 
       it('reports a size of 2 after adding two items', function() {
+        // debugger;
         stack.push('a');
         stack.push('b');
         expect(stack.size()).to.equal(2);
@@ -151,6 +152,7 @@ define([
       });
 
       it('removes the oldest item, after newer items have already been added and removed', function() {
+        // debugger;
         queue.enqueue('a');
         queue.enqueue('b');
         queue.dequeue();
