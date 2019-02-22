@@ -4,31 +4,39 @@ var LinkedList = function() {
   list.tail = null;
   list.counter = 0;
 
-  list.addToTail = (function() {
-    var hasHead = false;
-    return function(value) {
-      if (!hasHead) {
-        hasHead = true;
-        var newNode = new Node(value);
-        list.head = newNode;
-        list[counter] = newNode;
-        list.tail = newNode; // for first node in list
-        list.counter++;
-      } else {
-        var newNode = new Node(value);
-        var currentTail = list.tail;
-        currentTail.next = counter;
-        list.tail = newNode;
-        list[counter] = newNode; // add node to list
-        list.counter++;
-      }
-    };
-  })();
-
-  list.removeHead = function() {
+  list.addToTail = function(value) {
+    if (this.head === null) {
+      var newNode = new Node(value);
+      this.head = newNode;
+      this[this.counter] = newNode; // not needed but for debugging purposes
+      this.tail = newNode; // for first node in list
+      this.counter++;
+    } else {
+      var newNode = new Node(value);
+      var currentTail = this.tail;
+      currentTail.next = newNode;
+      this.tail = newNode;
+      this[this.counter] = newNode; // add node to list
+      this.counter++;
+    }
   };
 
-  list.contains = function(target) {
+  list.removeHead = function() {
+    var formerHead = this.head;
+    var nextHead = this.head.next; // evaluates to null if linked list only has one value
+    this.head = nextHead;
+    return formerHead.value;
+  };
+
+  list.contains = function(target, node) {
+    node = node || this.head;
+    if (node.value === target) {
+      return true;
+    }
+    if (node.next === null) {
+      return false;
+    }
+    return this.contains(target, node.next);
   };
 
   return list;
