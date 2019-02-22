@@ -16,19 +16,19 @@ treeMethods.addChild = function(value) {
   this.children.push(newTree);
 };
 
-treeMethods.contains = function(target, node) {
-  node = node || this;
+treeMethods.contains = function(target) {
   // base case
-  if (node.value === target) { 
+  if (this.value === target) { 
     return true;
   }
   // recursive case
-  if (node.children.length > 0) {
-    var children = node.children;
+  if (this.children.length > 0) {
+    var children = this.children;
     for (var i = 0; i < children.length; i++) {
-      if (this.contains(target, children[i])) {
+      var node = children[i];
+      if (node.contains(target)) {
         return true;
-      }   
+      }
     }
   }
   return false;
@@ -38,4 +38,6 @@ treeMethods.contains = function(target, node) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+  newTree.addChild - O(1) because adding an element to an array is constant time (if you know length property)
+  newTree.contains - O(N) because the recursive check will go through the entire tree in the worst case
  */
