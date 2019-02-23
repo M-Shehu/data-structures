@@ -1,15 +1,12 @@
 // Instantiate a new graph
 var Graph = function() {
-  // this.counter = 0;
   // no properties needed since using pseudoclassical instantiation
-  // creating a node function to utilize graph
 };
 
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(node) {
   var newNode = new GraphNode(node);
   this[newNode.data] = newNode; // using data value as the key
-  // this.counter++;
 };
 
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
@@ -34,7 +31,6 @@ Graph.prototype.removeNode = function(node) {
         delete nodePair.edges[node];
       }
       delete this[key];
-      // delete this[toNode].edges[fromNode];
       return nodeData;
     }
   }
@@ -68,12 +64,12 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
 Graph.prototype.forEachNode = function(cb) {
   for (var key in this) {
     if (this.hasOwnProperty(key)) {
-      // console.log(this[key]);
       cb(this[key].data);
     }
   }
 };
 
+// creating a node function to build nodes for the graph
 // adds GraphNode to the global namespace - risk of collision
 var GraphNode = function(data) {
   this.data = data;
@@ -86,7 +82,9 @@ var GraphNode = function(data) {
   Graph.prototype.contains - O(N) : searches whole graph object
   Graph.prototype.removeNode - O(N^2) : need to remove node and reference to node in all nodes that have it as an edge
   Graph.prototype.hasEdge - O(N) : loops through edges object
-  Graph.
+  Graph.prototype.addEdge - O(1)
+  Graph.prototype.removeEdge - O(1)
+  Graph.prototype.forEachNoce - O(N) : loops through all nodes
  */
 
 
