@@ -6,13 +6,13 @@ var LinkedList = function() {
 
   list.addToTail = function(value) {
     if (this.head === null) {
-      var newNode = new Node(value);
+      var newNode = Node(value);
       this.head = newNode;
       // this[this.counter] = newNode; 
       this.tail = newNode; // for first node in list
       // this.counter++;
     } else {
-      var newNode = new Node(value);
+      var newNode = Node(value);
       var currentTail = this.tail;
       currentTail.next = newNode;
       this.tail = newNode;
@@ -39,7 +39,6 @@ var LinkedList = function() {
     }
     return this.contains(target, node.next);
   };
-
   return list;
 };
 
