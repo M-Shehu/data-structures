@@ -11,30 +11,16 @@ Graph.prototype.addNode = function(node) {
 
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
 Graph.prototype.contains = function(node) {
-  for (var key in this) {
-    if (this[key].data === node) {
-      return true;
-    }
-  }
-  return false;
+  return !!this[node]; // coerce to bool
 };
 
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
-  var temp;
-  for (var key in this) {
-    if (this[key].data === node) {
-      nodeData = this[key].data;
-      nodeEdges = this[key].edges;
-      for (var edge in nodeEdges) {
-        var nodePair = this[edge];
-        delete nodePair.edges[node];
-      }
-      delete this[key];
-      return nodeData;
-    }
+  var nodeEdges = this[node].edges;
+  for (var nodePair in nodeEdges) {
+    delete this[nodePair].edges[node];
   }
-  return null; // If node doesnt exist, null is returned 
+  delete this[node];
 };
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
@@ -79,8 +65,8 @@ var GraphNode = function(data) {
 /*
  * Complexity: What is the time complexity of the above functions?
   Graph.prototype.addNode - O(1) : adds an item to an object
-  Graph.prototype.contains - O(N) : searches whole graph object
-  Graph.prototype.removeNode - O(N^2) : need to remove node and reference to node in all nodes that have it as an edge
+  Graph.prototype.contains - O(1) : check graph for existence of node property
+  Graph.prototype.removeNode - O(N) : loop through and delete edges to node in node pairs then delete node
   Graph.prototype.hasEdge - O(N) : loops through edges object
   Graph.prototype.addEdge - O(1)
   Graph.prototype.removeEdge - O(1)
