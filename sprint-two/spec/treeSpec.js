@@ -41,4 +41,10 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  it('should be able to add multiple children to one node', function() {
+    tree.addChild(5);
+    tree.addChild(6);
+    expect(tree.children.length).to.equal(2);
+  });
+
 });
