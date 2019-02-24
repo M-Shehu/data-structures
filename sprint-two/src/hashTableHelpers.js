@@ -12,7 +12,7 @@
 //   limitedArray.get(3); // returns 'hi'
 
 var LimitedArray = function(limit) {
-  var storage = [];
+  var storage = []; // hash table
 
   var limitedArray = {};
   limitedArray.get = function(index) {
