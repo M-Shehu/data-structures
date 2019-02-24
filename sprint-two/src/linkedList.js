@@ -2,22 +2,17 @@ var LinkedList = function() {
   var list = {};
   list.head = null;
   list.tail = null;
-  // list.counter = 0; // not needed but for debugging purposes
 
   list.addToTail = function(value) {
     if (this.head === null) {
       var newNode = Node(value);
       this.head = newNode;
-      // this[this.counter] = newNode; 
       this.tail = newNode; // for first node in list
-      // this.counter++;
     } else {
       var newNode = Node(value);
       var currentTail = this.tail;
       currentTail.next = newNode;
       this.tail = newNode;
-      // this[this.counter] = newNode; // add node to list
-      // this.counter++; 
     }
   };
 

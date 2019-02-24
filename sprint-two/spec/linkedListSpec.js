@@ -4,6 +4,10 @@ describe('linkedList', function() {
   beforeEach(function() {
     linkedList = LinkedList();
   });
+  it('should not have a head or tail if the linked list is just created', function() {
+    expect(linkedList.head).to.equal(null);
+    expect(linkedList.tail).to.equal(null);
+  });
 
   it('should have a head and tail', function() {
     expect(linkedList).to.have.property('head');
