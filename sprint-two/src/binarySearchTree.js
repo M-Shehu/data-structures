@@ -7,18 +7,21 @@ var BinarySearchTree = function(value) {
 };
 
 BinarySearchTree.prototype.insert = function(node) {
+  if (node === this.value) {
+    return "Already In The Tree";
+  }
   var compare = node > this.value;
   if (compare) {
     if (this.right === null) {
       this.right = BinarySearchTree(node);
     } else {
-      this.right.insert(node); // recursively searching down tree to properly insert node;
+      return this.right.insert(node); // recursively searching down tree to properly insert node; Added return keyword to test adding in duplicate values
     } 
   } else {
     if (this.left === null) {
       this.left = BinarySearchTree(node);
     } else {
-      this.left.insert(node);
+      return this.left.insert(node);
     }
   }
 };
