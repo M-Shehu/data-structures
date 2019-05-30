@@ -47,6 +47,12 @@ describe('hashTable', function() {
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
 
+  it('should hold key value pairs in an array at each index', function() {
+    hashTable.insert('Steven', 'Tyler');
+    var container = hashTable._storage.get(getIndexBelowMaxForKey('Steven', 8));
+    expect(Array.isArray(container)).to.be.true;
+  });
+
   // (Advanced! Remove the extra "x" when you want the following tests to run)
   xit ('should double in size when needed', function() {
     _.each(people, function(person) {
