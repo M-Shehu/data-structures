@@ -1,2 +1,4 @@
-# data-structures
-This is a project I completed as a student at [hackreactor](http://hackreactor.com). This project was worked on with a pair.
+# Data Structures
+
+## Project Description
+This is a repo to practice data structures and time complexity.
